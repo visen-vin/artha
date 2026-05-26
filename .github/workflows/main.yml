@@ -49,7 +49,7 @@ jobs:
             
             # Run database migrations (schema.sql)
             # Assuming postgres is running in docker as atlas_postgres
-            docker exec -i atlas_postgres psql -U user -d quant_lab < db/schema.sql
+            docker exec -i atlas_postgres psql -U user -d artha < db/schema.sql
             
             # Restart services with PM2
             pm2 startOrReload ecosystem.config.js
