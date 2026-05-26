@@ -9,17 +9,25 @@ from artha.core.trade_engine import TradeEngine
 from artha.core.position_monitor import PositionMonitor
 
 @pytest.mark.asyncio
-async def test_money_path_logic():
-    # 1. Decision Agent
-    agent = DecisionAgent({"min_confidence": 0.7})
-    signal = Signal(
-        strategy_id="test", market="crypto", symbol="BTCUSDT", tf="15m",
-        side=Side.LONG, confidence=0.95, suggested_entry=50000.0,
-        suggested_sl=49000.0, suggested_tp=52000.0,
-        candle_close_time=datetime.now(timezone.utc)
-    )
-    decision = await agent.decide(signal)
-    assert decision.verdict == Verdict.TAKE
+async def test_money_path_logic(monkeypatch):
+    # Mock GuruJiBrain to avoid LLM initialization (and missing API key errors)
+    mock_brain = MagicMock()
+    # If the test triggers the LLM path (confidence < 0.95), we return a mocked TAKE verdict
+    mock_brain.decide = AsyncMock(return_value=(Verdict.TAKE, "MOCK_APPROVED", "Mocked reasoning", 1.0))
+    
+    with monkeypatch.context() as m:
+        m.setattr("artha.core.decision_agent_orchestrator.GuruJiBrain", lambda config: mock_brain)
+        
+        # 1. Decision Agent
+        agent = DecisionAgent({"min_confidence": 0.7})
+        signal = Signal(
+            strategy_id="test", market="crypto", symbol="BTCUSDT", tf="15m",
+            side=Side.LONG, confidence=0.95, suggested_entry=50000.0,
+            suggested_sl=49000.0, suggested_tp=52000.0,
+            candle_close_time=datetime.now(timezone.utc)
+        )
+        decision = await agent.decide(signal)
+        assert decision.verdict == Verdict.TAKE
 
     # 2. Risk Guard
     risk = RiskGuard({"max_concurrent_positions": 5, "max_risk_per_trade_pct": 0.01, "total_capital": 100000.0})
