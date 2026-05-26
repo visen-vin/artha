@@ -3,7 +3,7 @@ import asyncio
 from unittest.mock import AsyncMock, MagicMock
 from datetime import datetime, timezone
 from artha.schemas.models import Signal, Side, Verdict, Candle
-from artha.core.decision_agent import DecisionAgent
+from artha.core.decision_agent_orchestrator import DecisionAgent
 from artha.core.risk_guard import RiskGuard
 from artha.core.trade_engine import TradeEngine
 from artha.core.position_monitor import PositionMonitor
@@ -37,7 +37,8 @@ async def test_money_path_logic():
     # 4. Position Monitor (Auto-cut)
     repo = MagicMock()
     repo.close_position = AsyncMock()
-    monitor = PositionMonitor(repo)
+    redis = AsyncMock()
+    monitor = PositionMonitor(repo, redis)
     monitor.add_position(position)
     
     # Tick that hits SL
