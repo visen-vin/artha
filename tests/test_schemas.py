@@ -1,7 +1,7 @@
 import pytest
 from datetime import datetime, timezone
 from uuid import UUID
-from quant_lab.schemas.models import Candle, Signal, Side
+from artha.schemas.models import Candle, Signal, Side
 
 def test_candle_schema():
     candle = Candle(

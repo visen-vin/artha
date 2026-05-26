@@ -3,9 +3,9 @@ import json
 from datetime import datetime, timezone
 from typing import Dict, List, Optional
 from redis.asyncio import Redis
-from quant_lab.schemas.models import Position, Candle, Exit, Side, ExitReason
-from quant_lab.db.repositories.ledger import LedgerRepository
-from quant_lab.core.logger import get_logger
+from artha.schemas.models import Position, Candle, Exit, Side, ExitReason
+from artha.db.repositories.ledger import LedgerRepository
+from artha.core.logger import get_logger
 
 logger = get_logger(__name__)
 

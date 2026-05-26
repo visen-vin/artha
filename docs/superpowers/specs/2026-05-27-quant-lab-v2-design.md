@@ -1,4 +1,4 @@
-# Quant Lab v2 — Design & PRD
+# Artha v2 — Design & PRD
 
 **Status:** Approved design (pre-implementation)
 **Date:** 2026-05-27

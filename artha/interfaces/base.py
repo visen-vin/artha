@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from datetime import datetime
 from typing import List, Optional, Dict, Any
-from quant_lab.schemas.models import Candle, Signal, Position
+from artha.schemas.models import Candle, Signal, Position
 
 class Clock(ABC):
     @abstractmethod

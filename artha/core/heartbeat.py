@@ -3,7 +3,7 @@ import json
 import time
 from datetime import datetime
 from redis.asyncio import Redis
-from quant_lab.core.logger import get_logger
+from artha.core.logger import get_logger
 
 logger = get_logger(__name__)
 

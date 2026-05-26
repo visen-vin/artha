@@ -1,7 +1,7 @@
 import uuid
 from typing import Dict, Any, List, Optional
-from quant_lab.schemas.models import Signal, Decision, Position, MarketMode, Side
-from quant_lab.core.logger import get_logger
+from artha.schemas.models import Signal, Decision, Position, MarketMode, Side
+from artha.core.logger import get_logger
 
 logger = get_logger(__name__)
 

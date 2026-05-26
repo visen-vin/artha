@@ -1,8 +1,8 @@
 import pytest
 import asyncio
 from datetime import datetime, timedelta, timezone
-from quant_lab.strategies.ma_crossover import MACrossoverStrategy
-from quant_lab.schemas.models import Candle
+from artha.strategies.ma_crossover import MACrossoverStrategy
+from artha.schemas.models import Candle
 
 @pytest.mark.asyncio
 async def test_ma_crossover_logic():

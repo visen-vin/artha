@@ -1,9 +1,9 @@
 import asyncio
 from typing import Optional
 from datetime import datetime, timezone
-from quant_lab.schemas.models import Signal, Decision, Verdict
-from quant_lab.core.logger import get_logger
-from quant_lab.core.decision_agent import GuruJiBrain
+from artha.schemas.models import Signal, Decision, Verdict
+from artha.core.logger import get_logger
+from artha.core.decision_agent import GuruJiBrain
 
 logger = get_logger(__name__)
 

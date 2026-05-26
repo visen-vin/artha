@@ -4,8 +4,8 @@ import json
 import uuid
 from unittest.mock import AsyncMock, MagicMock
 from datetime import datetime, timezone
-from quant_lab.core.position_monitor import PositionMonitor
-from quant_lab.schemas.models import Position, Candle, MarketMode, Side
+from artha.core.position_monitor import PositionMonitor
+from artha.schemas.models import Position, Candle, MarketMode, Side
 
 @pytest.mark.asyncio
 async def test_event_emission():

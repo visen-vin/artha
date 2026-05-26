@@ -1,6 +1,6 @@
 import asyncio
-from quant_lab.core.logger import setup_logging, get_logger
-from quant_lab.core.heartbeat import Heartbeat
+from artha.core.logger import setup_logging, get_logger
+from artha.core.heartbeat import Heartbeat
 
 setup_logging()
 logger = get_logger("feed_india")

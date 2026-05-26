@@ -4,7 +4,7 @@ redis:
   url: "redis://localhost:6379"
 
 postgres:
-  url: "postgresql://user:password@localhost:5432/quant_lab"
+  url: "postgresql://user:password@localhost:5432/artha"
 
 llm:
   provider: "anthropic"

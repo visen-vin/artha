@@ -2,9 +2,9 @@ import asyncio
 import json
 from datetime import datetime, timezone, timedelta
 from redis.asyncio import Redis
-from quant_lab.core.logger import setup_logging, get_logger
-from quant_lab.core.heartbeat import Heartbeat
-from quant_lab.config.loader import config
+from artha.core.logger import setup_logging, get_logger
+from artha.core.heartbeat import Heartbeat
+from artha.config.loader import config
 
 setup_logging()
 logger = get_logger("watchdog")

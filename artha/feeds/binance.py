@@ -3,9 +3,9 @@ import json
 from datetime import datetime, timezone
 from typing import List, Dict, Any, Optional
 import aiohttp
-from quant_lab.interfaces.base import MarketAdapter
-from quant_lab.schemas.models import Candle
-from quant_lab.core.logger import get_logger
+from artha.interfaces.base import MarketAdapter
+from artha.schemas.models import Candle
+from artha.core.logger import get_logger
 
 logger = get_logger(__name__)
 

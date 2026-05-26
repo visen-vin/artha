@@ -1,15 +1,15 @@
 import asyncio
 import asyncpg
 from redis.asyncio import Redis
-from quant_lab.schemas.models import Signal, Candle, Verdict
-from quant_lab.db.repositories.ledger import LedgerRepository
-from quant_lab.core.decision_agent_orchestrator import DecisionAgent
-from quant_lab.core.risk_guard import RiskGuard
-from quant_lab.core.trade_engine import TradeEngine
-from quant_lab.core.position_monitor import PositionMonitor
-from quant_lab.core.logger import setup_logging, get_logger
-from quant_lab.core.heartbeat import Heartbeat
-from quant_lab.config.loader import config
+from artha.schemas.models import Signal, Candle, Verdict
+from artha.db.repositories.ledger import LedgerRepository
+from artha.core.decision_agent_orchestrator import DecisionAgent
+from artha.core.risk_guard import RiskGuard
+from artha.core.trade_engine import TradeEngine
+from artha.core.position_monitor import PositionMonitor
+from artha.core.logger import setup_logging, get_logger
+from artha.core.heartbeat import Heartbeat
+from artha.config.loader import config
 
 setup_logging()
 logger = get_logger("core_engine")

@@ -2,11 +2,11 @@ import pytest
 import asyncio
 from unittest.mock import AsyncMock, MagicMock
 from datetime import datetime, timezone
-from quant_lab.schemas.models import Signal, Side, Verdict, Candle
-from quant_lab.core.decision_agent import DecisionAgent
-from quant_lab.core.risk_guard import RiskGuard
-from quant_lab.core.trade_engine import TradeEngine
-from quant_lab.core.position_monitor import PositionMonitor
+from artha.schemas.models import Signal, Side, Verdict, Candle
+from artha.core.decision_agent import DecisionAgent
+from artha.core.risk_guard import RiskGuard
+from artha.core.trade_engine import TradeEngine
+from artha.core.position_monitor import PositionMonitor
 
 @pytest.mark.asyncio
 async def test_money_path_logic():

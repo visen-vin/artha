@@ -1,7 +1,7 @@
 import asyncpg
 from typing import List
-from quant_lab.schemas.models import Candle
-from quant_lab.core.logger import get_logger
+from artha.schemas.models import Candle
+from artha.core.logger import get_logger
 
 logger = get_logger(__name__)
 

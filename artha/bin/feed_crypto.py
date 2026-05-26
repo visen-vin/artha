@@ -2,11 +2,11 @@ import asyncio
 import json
 import asyncpg
 from redis.asyncio import Redis
-from quant_lab.feeds.binance import BinanceAdapter
-from quant_lab.db.repositories.market_data import MarketDataRepository
-from quant_lab.core.logger import setup_logging, get_logger
-from quant_lab.core.heartbeat import Heartbeat
-from quant_lab.config.loader import config
+from artha.feeds.binance import BinanceAdapter
+from artha.db.repositories.market_data import MarketDataRepository
+from artha.core.logger import setup_logging, get_logger
+from artha.core.heartbeat import Heartbeat
+from artha.config.loader import config
 
 setup_logging()
 logger = get_logger("feed_crypto")

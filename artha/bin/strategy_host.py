@@ -3,11 +3,11 @@ import json
 import importlib
 from typing import Dict, List, Type
 from redis.asyncio import Redis
-from quant_lab.interfaces.base import Strategy
-from quant_lab.schemas.models import Candle
-from quant_lab.core.logger import setup_logging, get_logger
-from quant_lab.core.heartbeat import Heartbeat
-from quant_lab.config.loader import config
+from artha.interfaces.base import Strategy
+from artha.schemas.models import Candle
+from artha.core.logger import setup_logging, get_logger
+from artha.core.heartbeat import Heartbeat
+from artha.config.loader import config
 
 setup_logging()
 logger = get_logger("strategy_host")
@@ -33,7 +33,7 @@ class StrategyHost:
             # or we could add a 'class' field to config.
             # Let's map it manually for now or use a convention.
             if strat_id == "ma_cross":
-                module_path = "quant_lab.strategies.ma_crossover"
+                module_path = "artha.strategies.ma_crossover"
                 class_name = "MACrossoverStrategy"
             else:
                 logger.error(f"Unknown strategy ID: {strat_id}")

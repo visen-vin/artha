@@ -3,10 +3,10 @@ import asyncpg
 import polars as pl
 from datetime import datetime
 from typing import List, Dict, Any, Optional
-from quant_lab.interfaces.base import Strategy, Clock
-from quant_lab.schemas.models import Candle, Signal, Side
-from quant_lab.core.logger import setup_logging, get_logger
-from quant_lab.config.loader import config
+from artha.interfaces.base import Strategy, Clock
+from artha.schemas.models import Candle, Signal, Side
+from artha.core.logger import setup_logging, get_logger
+from artha.config.loader import config
 
 setup_logging()
 logger = get_logger("backtester")
@@ -85,7 +85,7 @@ class Backtester:
 
 async def example_backtest():
     # Example usage
-    from quant_lab.strategies.ma_crossover import MACrossoverStrategy
+    from artha.strategies.ma_crossover import MACrossoverStrategy
     
     db_url = config.get("postgres", {}).get("url")
     tester = Backtester(db_url)

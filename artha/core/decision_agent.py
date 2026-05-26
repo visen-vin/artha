@@ -8,8 +8,8 @@ from langchain_anthropic import ChatAnthropic
 from langchain_core.messages import HumanMessage, SystemMessage
 from langgraph.graph import StateGraph, END
 
-from quant_lab.schemas.models import Signal, Decision, Verdict
-from quant_lab.core.logger import get_logger
+from artha.schemas.models import Signal, Decision, Verdict
+from artha.core.logger import get_logger
 
 logger = get_logger(__name__)
 

@@ -1,9 +1,9 @@
 import polars as pl
 from typing import Optional, Dict, Any
 from datetime import datetime
-from quant_lab.interfaces.base import Strategy
-from quant_lab.schemas.models import Candle, Signal, Side
-from quant_lab.core.logger import get_logger
+from artha.interfaces.base import Strategy
+from artha.schemas.models import Candle, Signal, Side
+from artha.core.logger import get_logger
 
 logger = get_logger(__name__)
 

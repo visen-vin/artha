@@ -4,9 +4,9 @@ import os
 from telegram import Update
 from telegram.ext import Application, CommandHandler, ContextTypes
 from redis.asyncio import Redis
-from quant_lab.core.logger import setup_logging, get_logger
-from quant_lab.core.heartbeat import Heartbeat
-from quant_lab.config.loader import config
+from artha.core.logger import setup_logging, get_logger
+from artha.core.heartbeat import Heartbeat
+from artha.config.loader import config
 
 setup_logging()
 logger = get_logger("control_bot")
