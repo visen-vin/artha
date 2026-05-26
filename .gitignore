@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+.env
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Quant Lab
+logs/
+heartbeats/
+*.log
+
+# Project
+.python-version
+
+# IDEs
+.vscode/
+.idea/
+.DS_Store
+
+# Credentials (redundant but safe)
+config.yaml
+!config.example.yaml

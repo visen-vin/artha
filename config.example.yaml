@@ -1,0 +1,41 @@
+# Quant Lab v2 — Configuration (Example)
+
+redis:
+  url: "redis://localhost:6379"
+
+postgres:
+  url: "postgresql://user:password@localhost:5432/quant_lab"
+
+llm:
+  provider: "anthropic"
+  model_haiku: "claude-3-haiku-20240307"
+  model_opus: "claude-3-opus-20240229"
+  timeout: 2.0
+
+risk:
+  max_risk_per_trade_pct: 0.01
+  max_daily_loss_pct: 0.03
+  max_concurrent_positions: 5
+
+telegram:
+  token: "YOUR_TELEGRAM_BOT_TOKEN"
+  chat_id: "YOUR_TELEGRAM_CHAT_ID"
+
+markets:
+  crypto:
+    enabled: true
+    adapter: "binance"
+    symbols: ["BTCUSDT", "ETHUSDT"]
+    timeframes: ["15m"]
+  india:
+    enabled: false
+    adapter: "zerodha"
+    symbols: ["RELIANCE", "NIFTY50"]
+    timeframes: ["15m"]
+
+strategies:
+  - id: "ma_cross"
+    enabled: true
+    params:
+      fast_period: 9
+      slow_period: 21
