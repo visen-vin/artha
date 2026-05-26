@@ -7,10 +7,9 @@ postgres:
   url: "postgresql://user:password@localhost:5432/artha"
 
 llm:
-  provider: "anthropic"
-  model_haiku: "claude-3-haiku-20240307"
-  model_opus: "claude-3-opus-20240229"
-  timeout: 2.0
+  provider: "deepseek"
+  model: "deepseek-chat"
+  timeout: 10.0
 
 risk:
   max_risk_per_trade_pct: 0.01

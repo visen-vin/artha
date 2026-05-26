@@ -4,7 +4,7 @@ import asyncio
 from typing import Dict, Any, Tuple, Optional
 from datetime import datetime, timezone
 
-from langchain_anthropic import ChatAnthropic
+from langchain_openai import ChatOpenAI
 from langchain_core.messages import HumanMessage, SystemMessage
 from langgraph.graph import StateGraph, END
 
@@ -23,18 +23,20 @@ class DecisionState(Dict):
 
 class GuruJiBrain:
     """
-    Guru Ji — The AI reasoning engine using LangGraph.
+    Guru Ji — The AI reasoning engine using LangGraph and DeepSeek.
     """
     def __init__(self, config: dict):
         self.config = config
-        self.api_key = os.environ.get("ANTHROPIC_API_KEY")
-        self.model_haiku = config.get("model_haiku", "claude-3-haiku-20240307")
-        self.timeout = config.get("timeout", 2.0)
+        self.api_key = os.environ.get("DEEPSEEK_API_KEY")
+        self.base_url = "https://api.deepseek.com"
+        self.model = config.get("model", "deepseek-chat")
+        self.timeout = config.get("timeout", 10.0)
         
-        # Initialize LLM
-        self.llm = ChatAnthropic(
-            model=self.model_haiku,
-            anthropic_api_key=self.api_key,
+        # Initialize LLM (OpenAI compatible)
+        self.llm = ChatOpenAI(
+            model=self.model,
+            openai_api_key=self.api_key,
+            openai_api_base=self.base_url,
             timeout=self.timeout,
             max_retries=1
         )
@@ -106,7 +108,7 @@ class GuruJiBrain:
     async def decide(self, signal: Signal) -> Tuple[Verdict, str, str, float]:
         """Runs the LangGraph workflow to get a decision."""
         if not self.api_key or self.api_key == "PLACEHOLDER":
-            logger.warning("ANTHROPIC_API_KEY not set. Using stub fallback.")
+            logger.warning("DEEPSEEK_API_KEY not set. Using stub fallback.")
             return Verdict.REJECT, "LLM_NOT_CONFIGURED", "API Key missing", 0.0
 
         initial_state = {
