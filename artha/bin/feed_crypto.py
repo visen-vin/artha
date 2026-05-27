@@ -43,20 +43,25 @@ async def main():
     # 3. Stream loop
     logger.info("Entering stream loop...")
     try:
-        async for candle in adapter.subscribe(symbols, timeframes):
-            # Normalize and publish
-            # Only publish closed candles to the primary candle stream
-            if candle.closed:
-                stream_name = f"candles:crypto:{candle.symbol}:{candle.tf}"
-                await redis.xadd(stream_name, {"data": candle.model_dump_json()}, maxlen=1000, approximate=True)
-                
-                # Persist to DB
-                await repo.upsert_candle(candle)
-                logger.debug(f"Published closed candle for {candle.symbol} {candle.tf}")
-            else:
-                # Fast ticks / unclosed candles to Pub/Sub
-                channel_name = f"prices:crypto:{candle.symbol}"
-                await redis.publish(channel_name, candle.model_dump_json())
+        while True:
+            try:
+                async for candle in adapter.subscribe(symbols, timeframes):
+                    # Normalize and publish
+                    # Only publish closed candles to the primary candle stream
+                    if candle.closed:
+                        stream_name = f"candles:crypto:{candle.symbol}:{candle.tf}"
+                        await redis.xadd(stream_name, {"data": candle.model_dump_json()}, maxlen=1000, approximate=True)
+                        
+                        # Persist to DB
+                        await repo.upsert_candle(candle)
+                        logger.debug(f"Published closed candle for {candle.symbol} {candle.tf}")
+                    else:
+                        # Fast ticks / unclosed candles to Pub/Sub
+                        channel_name = f"prices:crypto:{candle.symbol}"
+                        await redis.publish(channel_name, candle.model_dump_json())
+            except Exception as e:
+                logger.error(f"Stream dropped, reconnecting in 5s... Error: {e}")
+                await asyncio.sleep(5)
                 
     except asyncio.CancelledError:
         logger.info("Crypto Feed stopping...")

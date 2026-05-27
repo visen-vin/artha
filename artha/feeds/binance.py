@@ -86,10 +86,9 @@ class BinanceAdapter(MarketAdapter):
     async def subscribe(self, symbols: List[str], timeframes: List[str]):
         """
         In this adapter, subscribe returns an async generator for the WS stream.
-        This is a slight deviation from the interface to be more pythonic for streams.
         """
         streams = "/".join([f"{s.lower()}@kline_{tf}" for s in symbols for tf in timeframes])
-        url = f"{self.WS_URL}/{streams}"
+        url = f"wss://stream.binance.com:9443/stream?streams={streams}"
         
         async with aiohttp.ClientSession() as session:
             async with session.ws_connect(url) as ws:
@@ -97,7 +96,9 @@ class BinanceAdapter(MarketAdapter):
                 async for msg in ws:
                     if msg.type == aiohttp.WSMsgType.TEXT:
                         data = json.loads(msg.data)
-                        yield self.normalize(data)
+                        # For /stream URL, data is wrapped in {"stream": "...", "data": {...}}
+                        payload = data.get("data", data)
+                        yield self.normalize(payload)
                     elif msg.type == aiohttp.WSMsgType.ERROR:
                         logger.error(f"WS connection closed with error: {ws.exception()}")
                         break

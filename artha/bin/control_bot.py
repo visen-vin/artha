@@ -29,7 +29,8 @@ class ControlBot:
         self.app.add_handler(CommandHandler("kill", self.kill_command))
 
         await self.app.initialize()
-        await self.app.start_polling()
+        await self.app.start()
+        await self.app.updater.start_polling()
         
         # Start event consumer
         asyncio.create_task(self._consume_events())
