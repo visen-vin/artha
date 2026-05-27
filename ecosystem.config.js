@@ -7,6 +7,7 @@ module.exports = {
       autorestart: true,
       watch: false,
       cwd: '/root/artha',
+      env_file: '.env',
       env: {
         PYTHONPATH: '.',
       },
@@ -18,6 +19,7 @@ module.exports = {
       autorestart: true,
       watch: false,
       cwd: '/root/artha',
+      env_file: '.env',
       env: {
         PYTHONPATH: '.',
       },
@@ -29,6 +31,7 @@ module.exports = {
       autorestart: true,
       watch: false,
       cwd: '/root/artha',
+      env_file: '.env',
       env: {
         PYTHONPATH: '.',
       },
@@ -40,6 +43,7 @@ module.exports = {
       autorestart: true,
       watch: false,
       cwd: '/root/artha',
+      env_file: '.env',
       env: {
         PYTHONPATH: '.',
       },
@@ -51,6 +55,7 @@ module.exports = {
       autorestart: true,
       watch: false,
       cwd: '/root/artha',
+      env_file: '.env',
       env: {
         PYTHONPATH: '.',
       },
@@ -62,6 +67,7 @@ module.exports = {
       autorestart: true,
       watch: false,
       cwd: '/root/artha',
+      env_file: '.env',
       env: {
         PYTHONPATH: '.',
       },
