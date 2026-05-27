@@ -2,8 +2,8 @@ module.exports = {
   apps: [
     {
       name: 'feed-crypto',
-      script: 'artha/bin/feed_crypto.py',
-      interpreter: '/root/artha/.venv/bin/python3',
+      script: '/root/.local/bin/uv',
+      args: 'run python -m artha.bin.feed_crypto',
       autorestart: true,
       watch: false,
       cwd: '/root/artha',
@@ -13,8 +13,8 @@ module.exports = {
     },
     {
       name: 'feed-india',
-      script: 'artha/bin/feed_india.py',
-      interpreter: '/root/artha/.venv/bin/python3',
+      script: '/root/.local/bin/uv',
+      args: 'run python -m artha.bin.feed_india',
       autorestart: true,
       watch: false,
       cwd: '/root/artha',
@@ -24,8 +24,8 @@ module.exports = {
     },
     {
       name: 'strategy-host',
-      script: 'artha/bin/strategy_host.py',
-      interpreter: '/root/artha/.venv/bin/python3',
+      script: '/root/.local/bin/uv',
+      args: 'run python -m artha.bin.strategy_host',
       autorestart: true,
       watch: false,
       cwd: '/root/artha',
@@ -35,8 +35,8 @@ module.exports = {
     },
     {
       name: 'core-engine',
-      script: 'artha/bin/core_engine.py',
-      interpreter: '/root/artha/.venv/bin/python3',
+      script: '/root/.local/bin/uv',
+      args: 'run python -m artha.bin.core_engine',
       autorestart: true,
       watch: false,
       cwd: '/root/artha',
@@ -46,8 +46,8 @@ module.exports = {
     },
     {
       name: 'control-bot',
-      script: 'artha/bin/control_bot.py',
-      interpreter: '/root/artha/.venv/bin/python3',
+      script: '/root/.local/bin/uv',
+      args: 'run python -m artha.bin.control_bot',
       autorestart: true,
       watch: false,
       cwd: '/root/artha',
@@ -57,8 +57,8 @@ module.exports = {
     },
     {
       name: 'watchdog',
-      script: 'artha/bin/watchdog.py',
-      interpreter: '/root/artha/.venv/bin/python3',
+      script: '/root/.local/bin/uv',
+      args: 'run python -m artha.bin.watchdog',
       autorestart: true,
       watch: false,
       cwd: '/root/artha',
